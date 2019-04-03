@@ -38,12 +38,17 @@ class Reserva(models.Model):
 
 class Venda(models.Model):
     data_hora_venda = models.DateTimeField('date published')
-    soma_pontos_venda = models.IntegerField(null = False, default = 0)
     cliente_venda = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
-    servico_venda = models.ForeignKey(Servico, on_delete=models.CASCADE)
-    produto_venda = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    servico_venda = models.ForeignKey(Servico, on_delete=models.SET_NULL, null=True, blank=True)
+    produto_venda = models.ForeignKey(Produto, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.cliente_venda, self.data_hora_venda
+        return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "p"+ str(self.soma_pontos_venda())
+
+    @property
+    def soma_pontos_venda(self):
+        pontos = self.servico_venda.pontos_servico + self.produto_venda.pontos_produto
+        #concertar aqui
+        return pontos
 
     #Fazer Função de somatória de pontos
