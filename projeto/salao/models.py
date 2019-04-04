@@ -4,13 +4,16 @@ from django.contrib.auth.models import User
 class Cliente (models.Model):
     nome_cliente = models.CharField(max_length=200, null=False)
     telefone_cliente = models.CharField(max_length=12)
-    pontos_cliente = models.IntegerField(null=False)
     instagram_cliente = models.CharField(max_length=50)
     bairro_cliente = models.CharField(max_length=200, null=False)
     #ultima_alteracao = models.ForeignKey(User, on_delete=models.CASCADE) #Campo de quem fez a ultima alteração
 
     def __str__(self):
         return self.nome_cliente
+
+    # @property
+    # def pontos_cliente(self):
+    #
 
 class Produto(models.Model):
     desc_produto = models.CharField(max_length=200, null=False)
@@ -33,8 +36,9 @@ class Reserva(models.Model):
     data_hora_reserva = models.DateTimeField(null = False)
     cliente_reserva = models.ForeignKey(Cliente,on_delete=models.CASCADE, null = False)
 
+
     def __str__(self):
-        return self.data_hora_reserva, self.cliente_reserva
+        return str(self.data_hora_reserva) + ":" +str(self.cliente_reserva)
 
 class Venda(models.Model):
     data_hora_venda = models.DateTimeField('date published')
@@ -43,12 +47,23 @@ class Venda(models.Model):
     produto_venda = models.ForeignKey(Produto, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "p"+ str(self.soma_pontos_venda())
+        return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "- PontosG: " + str(self.soma_pontos_venda)
+
 
     @property
     def soma_pontos_venda(self):
-        pontos = self.servico_venda.pontos_servico + self.produto_venda.pontos_produto
-        #concertar aqui
+        pontos = 0
+
+
+        if self.servico_venda:
+            pontos = pontos + self.servico_venda.pontos_servico
+
+        if self.produto_venda:
+            pontos = pontos + self.produto_venda.pontos_produto
+
+
         return pontos
+
+
 
     #Fazer Função de somatória de pontos
