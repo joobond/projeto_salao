@@ -9,11 +9,16 @@ class Cliente (models.Model):
     #ultima_alteracao = models.ForeignKey(User, on_delete=models.CASCADE) #Campo de quem fez a ultima alteração
 
     def __str__(self):
-        return self.nome_cliente
+        return self.nome_cliente + " Pontos: " + str(self.pontos_cliente)
 
-    # @property
-    # def pontos_cliente(self):
-    #
+    @property
+    def pontos_cliente(self):
+        pontos = 0
+        for x in Venda.objects.all():
+            if x.cliente_venda.id == self.id:
+                pontos = x.soma_pontos_venda
+        return pontos
+
 
 class Produto(models.Model):
     desc_produto = models.CharField(max_length=200, null=False)
@@ -53,7 +58,6 @@ class Venda(models.Model):
     @property
     def soma_pontos_venda(self):
         pontos = 0
-
         if self.servico_venda:
             for x in self.servico_venda.all():
                 pontos = pontos + x.pontos_servico
@@ -61,8 +65,6 @@ class Venda(models.Model):
         if self.produto_venda:
             for x in self.produto_venda.all():
                 pontos = pontos + x.pontos_produto
-
-
         return pontos
 
 
