@@ -43,8 +43,8 @@ class Reserva(models.Model):
 class Venda(models.Model):
     data_hora_venda = models.DateTimeField('date published')
     cliente_venda = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
-    servico_venda = models.ForeignKey(Servico, on_delete=models.SET_NULL, null=True, blank=True)
-    produto_venda = models.ForeignKey(Produto, on_delete=models.SET_NULL, null=True, blank=True)
+    servico_venda = models.ManyToManyField(Servico, related_name='servico_venda_set')
+    produto_venda = models.ManyToManyField(Produto, related_name='produto_venda_set')
 
     def __str__(self):
         return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "- PontosG: " + str(self.soma_pontos_venda)
@@ -54,12 +54,13 @@ class Venda(models.Model):
     def soma_pontos_venda(self):
         pontos = 0
 
-
         if self.servico_venda:
-            pontos = pontos + self.servico_venda.pontos_servico
+            for x in self.servico_venda.all():
+                pontos = pontos + x.pontos_servico
 
         if self.produto_venda:
-            pontos = pontos + self.produto_venda.pontos_produto
+            for x in self.produto_venda.all():
+                pontos = pontos + x.pontos_produto
 
 
         return pontos
