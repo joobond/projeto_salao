@@ -42,7 +42,7 @@ class Reserva(models.Model):
 
 class Venda(models.Model):
     data_hora_venda = models.DateTimeField('date published')
-    cliente_venda = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
+    cliente_venda = models.ForeignKey(Cliente, ,on_delete=models.CASCADE, null=False)
     servico_venda = models.ManyToManyField(Servico, related_name='servico_venda_set')
     produto_venda = models.ManyToManyField(Produto, related_name='produto_venda_set')
 
