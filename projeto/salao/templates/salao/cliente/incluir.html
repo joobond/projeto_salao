@@ -2,11 +2,21 @@
     <title>Incluir Cliente - Salão</title>
 </head>
 <body>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <form action="{% url 'cliente:incluirCliente' cliente.id %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Salvar</button>
-    </form>
+    <div class="page-header">
+            <h1><a href="/">Incluir Cliente - Rota 836</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                        <form action="{% url 'cliente:incluir_cliente'%}" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="save btn btn-default">Salvar</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+
 </body>
 </html>
