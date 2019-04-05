@@ -11,11 +11,13 @@ class DetailViewCliente(generic.DetailView):
     template_name = 'salao/cliente/detalhes.html'
 
 def IncluirCliente(request):
+    template_name = 'salao/cliente/incluir.html'
     if request.method == "POST":
         form = ClienteForm(request.POST)
     else:
         form = ClienteForm()
-        return render(request, 'cliente/incluir.html', {'form': form})
+
+    return render(request, 'cliente/incluir.html', {'form': form})
 
 
 
