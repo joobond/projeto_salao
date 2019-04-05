@@ -1,0 +1,12 @@
+{% include 'header.html' %}
+    <title>Incluir Cliente - Salão</title>
+</head>
+<body>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'cliente:incluirCliente' cliente.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Salvar</button>
+    </form>
+</body>
+</html>

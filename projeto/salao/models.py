@@ -9,11 +9,16 @@ class Cliente (models.Model):
     #ultima_alteracao = models.ForeignKey(User, on_delete=models.CASCADE) #Campo de quem fez a ultima alteração
 
     def __str__(self):
-        return self.nome_cliente
+        return self.nome_cliente + " Pontos: " + str(self.pontos_cliente)
 
-    # @property
-    # def pontos_cliente(self):
-    #
+    @property
+    def pontos_cliente(self):
+        pontos = 0
+        for x in Venda.objects.all():
+            if x.cliente_venda.id == self.id:
+                pontos = x.soma_pontos_venda
+        return pontos
+
 
 class Produto(models.Model):
     desc_produto = models.CharField(max_length=200, null=False)
@@ -42,9 +47,15 @@ class Reserva(models.Model):
 
 class Venda(models.Model):
     data_hora_venda = models.DateTimeField('date published')
+<<<<<<< HEAD
     cliente_venda = models.ForeignKey(Cliente, ,on_delete=models.CASCADE, null=False)
     servico_venda = models.ManyToManyField(Servico, related_name='servico_venda_set')
     produto_venda = models.ManyToManyField(Produto, related_name='produto_venda_set')
+=======
+    cliente_venda = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
+    servico_venda = models.ManyToManyField(Servico, blank=True)
+    produto_venda = models.ManyToManyField(Produto, blank=True)
+>>>>>>> cd21dc2c1bbf5da1912f4ecf4b53a91e5733becd
 
     def __str__(self):
         return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "- PontosG: " + str(self.soma_pontos_venda)
@@ -53,7 +64,6 @@ class Venda(models.Model):
     @property
     def soma_pontos_venda(self):
         pontos = 0
-
         if self.servico_venda:
             for x in self.servico_venda.all():
                 pontos = pontos + x.pontos_servico
@@ -61,8 +71,6 @@ class Venda(models.Model):
         if self.produto_venda:
             for x in self.produto_venda.all():
                 pontos = pontos + x.pontos_produto
-
-
         return pontos
 
 
