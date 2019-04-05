@@ -1,0 +1,11 @@
+{% include 'header.html' %}
+    <title>{{ cliente.nome_cliente }} - Salão</title>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <h1>{{ cliente.nome_cliente }}</h1>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <p> O cliente {{ cliente.nome_cliente }} tem atualmente <b>{{ cliente.pontos_cliente}}</b> pontos! </p>
+</body>
+</html>
+

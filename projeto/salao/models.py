@@ -48,8 +48,8 @@ class Reserva(models.Model):
 class Venda(models.Model):
     data_hora_venda = models.DateTimeField('date published')
     cliente_venda = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
-    servico_venda = models.ManyToManyField(Servico, related_name='servico_venda_set')
-    produto_venda = models.ManyToManyField(Produto, related_name='produto_venda_set')
+    servico_venda = models.ManyToManyField(Servico, blank=True)
+    produto_venda = models.ManyToManyField(Produto, blank=True)
 
     def __str__(self):
         return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "- PontosG: " + str(self.soma_pontos_venda)
