@@ -1,11 +1,14 @@
+{% extends '../base.html' %}
 {% block titulo_pagina %}
-    {{ produto.nome_produto }} - Salão
+    {{ produto.desc_produto }} - Salão
 {% endblock titulo_pagina %}
-</head>
-<body>
-    {% include 'nav.html' %}
-    <h1>{{ produto.nome_produto }}</h1>
+{% block h1_pagina %}
+    {{ produto.desc_produto }}
+{% endblock h1_pagina %}
+{% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <p> O cliente {{ produto.nome_produto }} tem atualmente <b>{{ produto.pontos_produto}}</b> pontos! </p>
-</body>
-</html>
+    <p class="mr-3"> Descrição do produto: {{produto.desc_produto}}</p>
+    <p class="mr-3"> Pontos do produto: {{produto.pontos_produto}}</p>
+    <p class="mr-3"> Valor do produto: R$ {{produto.valor_produto}}</p>
+    <p class="mr-3"> Marca do produto: {{produto.marca_produto}}</p>
+{% endblock content %}

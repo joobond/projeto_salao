@@ -9,7 +9,7 @@
                 <form action="{% url 'servico:incluir_servico'%}" method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="save btn btn-default">Salvar</button>
+                    <button type="submit" class="save btn btn-outline-success">Salvar</button>
                 </form>
         </div>
     </div>

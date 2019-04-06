@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3cb1f8e-d5c1-4cca-887f-3783eb7d9d1c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5501f851-0b26-4c80-a695-9ed9ade52296" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -71,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/produto/detalhes.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/projeto/salao/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+            <state relative-caret-position="323">
+              <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -83,20 +80,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/salao/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="133">
+              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,38 +135,49 @@
         <subPane>
           <expand>
             <path>
-              <item name="projeto_salao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_salao" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="projeto_salao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_salao" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
+              <item name="Docs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="projeto_salao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_salao" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
+              <item name="projeto" type="462c0819:PsiDirectoryNode" />
+              <item name="projeto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
               <item name="salao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="projeto_salao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_salao" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
               <item name="salao" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="projeto_salao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_salao" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
               <item name="salao" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="salao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="projeto_salao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_salao" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
               <item name="salao" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
@@ -183,13 +185,22 @@
               <item name="cliente" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="projeto_salao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projeto_salao" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
               <item name="projeto" type="462c0819:PsiDirectoryNode" />
               <item name="salao" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="salao" type="462c0819:PsiDirectoryNode" />
               <item name="produto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjetoSalao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjetoSalao" type="462c0819:PsiDirectoryNode" />
+              <item name="projeto" type="462c0819:PsiDirectoryNode" />
+              <item name="salao" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="salao" type="462c0819:PsiDirectoryNode" />
+              <item name="servico" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -261,11 +272,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16374000" />
+    <option name="totallyTimeSpent" value="16404000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.255119" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -323,23 +333,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/formularioCliente.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/salao/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/formularioCliente.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/formularioCliente.html" />
     <entry file="file://$PROJECT_DIR$/projeto/salao/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -356,13 +353,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="8" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/header.html" />
     <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -372,10 +363,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/salao/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+        <state relative-caret-position="133">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -390,7 +381,7 @@
     <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -406,8 +397,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/salao/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        <state relative-caret-position="323">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>

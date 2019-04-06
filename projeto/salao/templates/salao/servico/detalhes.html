@@ -1,11 +1,13 @@
+{% extends '../base.html' %}
 {% block titulo_pagina %}
-    {{ servico.nome_servico }} - Salão
+    {{ servico.desc_servico }} - Salão
 {% endblock titulo_pagina %}
-</head>
-<body>
-    {% include 'nav.html' %}
-    <h1>{{ servico.nome_servico }}</h1>
+{% block h1_pagina %}
+    {{ servico.desc_servico }}
+{% endblock h1_pagina %}
+{% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <p> O servico {{ servico.nome_servico }} tem atualmente <b>{{ servico.pontos_servico}}</b> pontos! </p>
-</body>
-</html>
+    <p> Descrição do serviço: {{servico.desc_servico}}</p>
+    <p> Pontos do serviço: {{servico.pontos_servico}}</p>
+    <p> Valor do serviço: R$ {{servico.valor_servico}}</p>
+{% endblock content %}
