@@ -1,0 +1,31 @@
+{% extends '../base.html' %}
+{% block titulo_pagina %}
+    Listar Clientes - Salão
+{% endblock titulo_pagina %}
+{% block h1_pagina %}
+    Lista de Clientes
+{% endblock h1_pagina %}
+{% block content %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Bairro</th>
+                  <th scope="col">Instagram</th>
+                  <th scope="col">Pontos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in Cliente.objects.all() %}
+                <tr>
+                  <th scope="row">{{ cliente.id }}</th>
+                  <td>{{ cliente.nome_cliente }}</td>
+                  <td>@{{ cliente.instagram_cliente }}</td>
+                  <td>{{ cliente.pontos_cliente }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+{% endblock content %}
