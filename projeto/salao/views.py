@@ -10,18 +10,15 @@ class DetailViewCliente(generic.DetailView):
     model = Cliente
     template_name = 'salao/cliente/detalhes.html'
 
+
 def IncluirCliente(request):
     template_name = 'salao/cliente/incluir.html'
     if request.method == "POST":
         form = ClienteForm(request.POST)
         cliente = form.save(commit=False)
         cliente.save()
-        #return redirect('detalhes_cliente', pk=cliente.pk)
+        # return redirect('detalhes_cliente', pk=cliente.pk)
     else:
         form = ClienteForm()
 
     return render(request, template_name, {'form': form})
-
-
-
-
