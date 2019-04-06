@@ -1,5 +1,6 @@
-{% include 'header.html' %}
-    <title>{{ cliente.nome_cliente }} - Salão</title>
+{% block titulo_pagina %}
+    {{ cliente.nome_cliente }} - Salão
+{% endblock titulo_pagina %}
 </head>
 <body>
     {% include 'nav.html' %}
