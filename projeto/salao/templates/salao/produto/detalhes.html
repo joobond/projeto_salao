@@ -1,0 +1,11 @@
+{% block titulo_pagina %}
+    {{ produto.nome_produto }} - Salão
+{% endblock titulo_pagina %}
+</head>
+<body>
+    {% include 'nav.html' %}
+    <h1>{{ produto.nome_produto }}</h1>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <p> O cliente {{ produto.nome_produto }} tem atualmente <b>{{ produto.pontos_produto}}</b> pontos! </p>
+</body>
+</html>

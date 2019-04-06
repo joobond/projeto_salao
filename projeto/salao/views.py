@@ -10,6 +10,7 @@ class DetailViewCliente(generic.DetailView):
     model = Cliente
     template_name = 'salao/cliente/detalhes.html'
 
+
 def IncluirCliente(request):
     template_name = 'salao/cliente/incluir.html'
     if request.method == "POST":
@@ -20,7 +21,3 @@ def IncluirCliente(request):
     else:
         form = ClienteForm()
         return render(request, template_name, {'form': form})
-
-
-
-

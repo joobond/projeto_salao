@@ -1,0 +1,11 @@
+{% block titulo_pagina %}
+    {{ servico.nome_servico }} - Salão
+{% endblock titulo_pagina %}
+</head>
+<body>
+    {% include 'nav.html' %}
+    <h1>{{ servico.nome_servico }}</h1>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <p> O servico {{ servico.nome_servico }} tem atualmente <b>{{ servico.pontos_servico}}</b> pontos! </p>
+</body>
+</html>

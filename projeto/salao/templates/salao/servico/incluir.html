@@ -1,0 +1,16 @@
+{% extends '../base.html' %}
+{% block h1_pagina %}
+    Incluir Serviço - Rota 836
+{% endblock h1_pagina %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                <form action="{% url 'servico:incluir_servico'%}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="save btn btn-default">Salvar</button>
+                </form>
+        </div>
+    </div>
+{% endblock content %}
