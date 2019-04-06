@@ -1,12 +1,13 @@
+{% extends '../base.html' %}
 {% block titulo_pagina %}
     {{ cliente.nome_cliente }} - Salão
 {% endblock titulo_pagina %}
-</head>
-<body>
-    {% include 'nav.html' %}
-    <h1>{{ cliente.nome_cliente }}</h1>
+{% block h1_pagina %}
+    {{ cliente.nome_cliente }}
+{% endblock h1_pagina %}
+{% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <p> O cliente {{ cliente.nome_cliente }} tem atualmente <b>{{ cliente.pontos_cliente}}</b> pontos! </p>
-</body>
-</html>
+{% endblock content %}
+
 

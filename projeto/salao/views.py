@@ -16,7 +16,7 @@ def IncluirCliente(request):
         form = ClienteForm(request.POST)
         cliente = form.save(commit=False)
         cliente.save()
-        return redirect('detalhes_cliente', pk=cliente.pk)
+        return redirect("cliente:detalhes_cliente", pk=cliente.pk)
     else:
         form = ClienteForm()
         return render(request, template_name, {'form': form})
