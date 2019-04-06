@@ -1,6 +1,6 @@
 {% extends '../base.html' %}
 {% block titulo_pagina %}
-    Listar Clientes - Salão
+    Lista Clientes - Salão
 {% endblock titulo_pagina %}
 {% block h1_pagina %}
     Lista de Clientes
@@ -18,10 +18,11 @@
                 </tr>
             </thead>
             <tbody>
-                {% for cliente in Cliente.objects.all() %}
+                {% for cliente in object_list %}
                 <tr>
                   <th scope="row">{{ cliente.id }}</th>
                   <td>{{ cliente.nome_cliente }}</td>
+                  <td>{{ cliente.bairro_cliente }}</td>
                   <td>@{{ cliente.instagram_cliente }}</td>
                   <td>{{ cliente.pontos_cliente }}</td>
                 </tr>

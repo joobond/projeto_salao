@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
+from django.views.generic.list import ListView
 from .forms import ClienteForm, ProdutoForm, ServicoForm
 from salao.models import Cliente, Servico, Produto
 
@@ -17,6 +18,12 @@ class DetailViewServico(generic.DetailView):
 class DetailViewProduto(generic.DetailView):
     model = Produto
     template_name = 'salao/produto/detalhes.html'
+
+class ListarClientes(ListView):
+    template_name = 'salao/cliente/listar.html'
+    model = Cliente
+    context_object_name = 'clientes'
+    paginate_by=10
 
 def IncluirCliente(request):
     template_name = 'salao/cliente/incluir.html'
