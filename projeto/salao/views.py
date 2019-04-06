@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from salao.models import Cliente, Servico, Produto
 from django.template import loader
 from django.urls import reverse
@@ -16,11 +16,10 @@ def IncluirCliente(request):
         form = ClienteForm(request.POST)
         cliente = form.save(commit=False)
         cliente.save()
-        #return redirect('detalhes_cliente', pk=cliente.pk)
+        return redirect('detalhes_cliente', pk=cliente.pk)
     else:
         form = ClienteForm()
-
-    return render(request, template_name, {'form': form})
+        return render(request, template_name, {'form': form})
 
 
 
