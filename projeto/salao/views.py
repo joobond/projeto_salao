@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import  HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
@@ -31,7 +32,7 @@ def IncluirCliente(request):
         form = ClienteForm(request.POST)
         cliente = form.save(commit=False)
         cliente.save()
-        return redirect("cliente:detalhes_cliente", pk=cliente.pk)
+        return HttpResponseRedirect(reverse('salao:detalhes_cliente',args=[cliente.pk]))
     else:
         form = ClienteForm()
         return render(request, template_name, {'form': form})
@@ -42,7 +43,7 @@ def IncluirProduto(request):
         form = ProdutoForm(request.POST)
         produto = form.save(commit=False)
         produto.save()
-        return redirect("produto:detalhes_produto", pk=produto.pk)
+        return redirect("salao:detalhes_produto", pk=produto.pk)
     else:
         form = ProdutoForm()
         return render(request, template_name, {'form': form})
@@ -53,7 +54,7 @@ def IncluirServico(request):
         form = ServicoForm(request.POST)
         servico = form.save(commit=False)
         servico.save()
-        return redirect("servico:detalhes_servico", pk=servico.pk)
+        return redirect("cliente:detalhes_servico", pk=servico.pk)
     else:
         form = ServicoForm()
         return render(request, template_name, {'form': form})

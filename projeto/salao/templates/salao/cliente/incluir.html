@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8">
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                <form action="{% url 'cliente:incluir_cliente'%}" method="post">
+                <form action="{% url 'salao:incluir_cliente'%}" method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="save btn btn-outline-success">Salvar</button>
