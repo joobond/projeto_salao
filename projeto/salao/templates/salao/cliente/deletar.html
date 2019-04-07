@@ -8,6 +8,7 @@
 {% block content %}
 <form action="{% url 'salao:apagar_cliente' cliente.pk %}" method="post">
     {% csrf_token %}
+    <p>Confirme a exclusão do cliente {{ cliente.nome_cliente }}</p>
     <input class="btn btn-danger" type="submit" value="Apagar" />
 </form>
 {% endblock %}

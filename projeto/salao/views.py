@@ -44,9 +44,9 @@ def IncluirCliente(request):
         form = ClienteForm()
         return render(request, template_name, {'form': form})
 
-class ApagarCliente(DeleteView):
+class DeletarCliente(DeleteView):
     model = Cliente
-    success_url = reverse_lazy('listar_clientes')
+    template_name_suffix = '/deletar'
 
 
 def IncluirProduto(request):
