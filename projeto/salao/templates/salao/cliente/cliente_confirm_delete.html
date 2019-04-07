@@ -1,0 +1,13 @@
+{% extends '../base.html' %}
+{% block titulo_pagina %}
+    Apagar Cliente - Salão
+{% endblock titulo_pagina %}
+{% block h1_pagina %}
+    Apagar Cliente - Salão
+{% endblock h1_pagina %}
+{% block content %}
+<form action="{% url 'salao:apagar_cliente' cliente.pk %}" method="post">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Apagar" />
+</form>
+{% endblock %}

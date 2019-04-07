@@ -15,7 +15,6 @@
                   <th scope="col">Bairro</th>
                   <th scope="col">Instagram</th>
                   <th scope="col">Pontos</th>
-                  <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,17 +25,6 @@
                   <td>{{ cliente.bairro_cliente }}</td>
                   <td><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/{{ cliente.instagram_cliente }}/">@{{ cliente.instagram_cliente }}</a></td>
                   <td>{{ cliente.pontos_cliente }}</td>
-                  <td><div class="btn-group">
-                              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Ação
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Detalhes</a>
-                                <a class="dropdown-item" href="#">Editar</a>
-                                <a class="dropdown-item" href="{% url 'apagar_cliente' cliente.id %}">Apagar</a>
-                              </div>
-                        </div>
-                  </td>
                 </tr>
                 {% endfor %}
             </tbody>

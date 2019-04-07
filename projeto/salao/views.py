@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import  HttpResponseRedirect
 from django.template import loader
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.list import ListView
+from django.views.generic import DeleteView
 from .forms import ClienteForm, ProdutoForm, ServicoForm
 from salao.models import Cliente, Servico, Produto
 
@@ -26,6 +27,12 @@ class ListarClientes(ListView):
     context_object_name = 'clientes'
     paginate_by=10
 
+class ListarProdutos(ListView):
+    template_name = 'salao/produto/listar.html'
+    model = Produto
+    context_object_name = 'produtos'
+    paginate_by=10
+
 def IncluirCliente(request):
     template_name = 'salao/cliente/incluir.html'
     if request.method == "POST":
@@ -36,6 +43,11 @@ def IncluirCliente(request):
     else:
         form = ClienteForm()
         return render(request, template_name, {'form': form})
+
+class ApagarCliente(DeleteView):
+    model = Cliente
+    success_url = reverse_lazy('listar_clientes')
+
 
 def IncluirProduto(request):
     template_name = 'salao/produto/incluir.html'

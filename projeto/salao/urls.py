@@ -10,6 +10,7 @@ cliente_patterns =[
     path('cliente/<int:pk>/', views.DetailViewCliente.as_view(), name='detalhes_cliente'),
     path('cliente/incluir/', views.IncluirCliente, name='incluir_cliente'),
     path('cliente/listar/', views.ListarClientes.as_view(), name='listar_clientes'),
+    path('cliente/apagar/<int:pk>/', views.ApagarCliente.as_view(), name='apagar_cliente'),
 ]
 
 # URL para Serviço
