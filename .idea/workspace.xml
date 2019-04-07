@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5501f851-0b26-4c80-a695-9ed9ade52296" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/projeto/salao/static/js/funcoes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projeto/salao/static/js/estilizacao.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projeto/salao/templates/salao/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/salao/templates/salao/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/cliente_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/deletar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/listar.html" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/listar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/salao/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/salao/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projeto/salao/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projeto/salao/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,59 +39,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/listar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="35" column="131" selection-start-line="35" selection-start-column="131" selection-end-line="35" selection-end-column="131" />
+            <state relative-caret-position="383">
+              <caret line="114" column="61" selection-start-line="114" selection-start-column="61" selection-end-line="114" selection-end-column="61" />
               <folding>
                 <element signature="e#3373#3380#1#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/projeto/salao/static/js/funcoes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="25" selection-start-column="25" selection-end-column="25" />
-              <folding>
-                <element signature="e#85#188#0" />
+                <element signature="e#4607#4614#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/deletar.html">
+        <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="330">
+              <caret line="15" column="79" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projeto/salao/urls.py">
+        <entry file="file://$PROJECT_DIR$/projeto/salao/static/js/estilizacao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projeto/salao/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="110">
+              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -100,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state relative-caret-position="273">
+              <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -128,15 +101,16 @@
         <option value="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/formularioCliente.html" />
         <option value="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/detalhes.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html" />
         <option value="$PROJECT_DIR$/projeto/projeto/urls.py" />
         <option value="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/cliente_coonfirm_delete.html" />
         <option value="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/_confirm_delete.html" />
         <option value="$PROJECT_DIR$/projeto/salao/urls.py" />
+        <option value="$PROJECT_DIR$/projeto/salao/static/js/funcoes.js" />
         <option value="$PROJECT_DIR$/projeto/salao/views.py" />
         <option value="$PROJECT_DIR$/projeto/salao/templates/salao/base.html" />
+        <option value="$PROJECT_DIR$/projeto/salao/static/js/estilizacao.js" />
+        <option value="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html" />
         <option value="$PROJECT_DIR$/projeto/salao/templates/salao/cliente/listar.html" />
-        <option value="$PROJECT_DIR$/projeto/salao/static/js/funcoes.js" />
       </list>
     </option>
   </component>
@@ -308,7 +282,7 @@
       <workItem from="1554515197664" duration="367000" />
       <workItem from="1554524897268" duration="2630000" />
       <workItem from="1554580021295" duration="6254000" />
-      <workItem from="1554648926771" duration="14409000" />
+      <workItem from="1554648926771" duration="18788000" />
     </task>
     <task id="LOCAL-00001" summary="Paginação">
       <created>1554586404780</created>
@@ -324,17 +298,23 @@
       <option name="project" value="LOCAL" />
       <updated>1554654257355</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Função de apagar incompleta2">
+      <created>1554673239026</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1554673239026</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40064000" />
+    <option name="totallyTimeSpent" value="44443000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2680965" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2680965" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -348,7 +328,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3281471" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3281471" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32956153" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -363,7 +343,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Paginação" />
     <MESSAGE value="Função de apagar incompleta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Função de apagar incompleta" />
+    <MESSAGE value="Função de apagar incompleta2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Função de apagar incompleta2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -454,13 +435,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/deletar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -468,17 +442,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projeto/salao/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+        <state relative-caret-position="92">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
@@ -487,7 +454,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/projeto/salao/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
+        <state relative-caret-position="268">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
@@ -495,22 +462,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/listar.html">
+    <entry file="file://$PROJECT_DIR$/projeto/salao/static/js/funcoes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="35" column="131" selection-start-line="35" selection-start-column="131" selection-end-line="35" selection-end-column="131" />
+        <state relative-caret-position="88">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="e#3373#3380#1#HTML" expanded="true" />
+            <element signature="e#85#188#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projeto/salao/static/js/funcoes.js">
+    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
+        <state relative-caret-position="273">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/salao/static/js/estilizacao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/incluir.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="79" selection-start-line="15" selection-start-column="79" selection-end-line="15" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projeto/salao/templates/salao/cliente/listar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="114" column="61" selection-start-line="114" selection-start-column="61" selection-end-line="114" selection-end-column="61" />
           <folding>
-            <element signature="e#85#188#0" />
+            <element signature="e#3373#3380#1#HTML" expanded="true" />
+            <element signature="e#4607#4614#1#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
