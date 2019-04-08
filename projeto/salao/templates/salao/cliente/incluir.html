@@ -2,14 +2,19 @@
 {% block h1_pagina %}
     Incluir Cliente - Rota 836
 {% endblock h1_pagina %}
+{% block titulo_pagina %}
+    Incluir Cliente - Rota 836
+{% endblock %}
 {% block content %}
     <div class="row">
         <div class="col-md-8">
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                <form action="{% url 'cliente:incluir_cliente'%}" method="post">
+                <form action="{% url 'salao:incluir_cliente'%}" method="post">
                     {% csrf_token %}
+                    <div class="form-group">
                     {{ form.as_p }}
-                    <button type="submit" class="save btn btn-outline-success">Salvar</button>
+                    <button type="submit" class="save btn btn-success btn-block">Salvar</button>
+                    </div>
                 </form>
         </div>
     </div>

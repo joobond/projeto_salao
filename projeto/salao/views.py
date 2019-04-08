@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import  HttpResponseRedirect
 from django.template import loader
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
+from django.views.generic.list import ListView
+from django.views.generic import DeleteView
 from .forms import ClienteForm, ProdutoForm, ServicoForm
 from salao.models import Cliente, Servico, Produto
 
@@ -18,16 +21,33 @@ class DetailViewProduto(generic.DetailView):
     model = Produto
     template_name = 'salao/produto/detalhes.html'
 
+class ListarClientes(ListView):
+    template_name = 'salao/cliente/listar.html'
+    model = Cliente
+    context_object_name = 'clientes'
+    paginate_by=10
+
+class ListarProdutos(ListView):
+    template_name = 'salao/produto/listar.html'
+    model = Produto
+    context_object_name = 'produtos'
+    paginate_by=10
+
 def IncluirCliente(request):
     template_name = 'salao/cliente/incluir.html'
     if request.method == "POST":
         form = ClienteForm(request.POST)
         cliente = form.save(commit=False)
         cliente.save()
-        return redirect("cliente:detalhes_cliente", pk=cliente.pk)
+        return HttpResponseRedirect(reverse('salao:detalhes_cliente',args=[cliente.pk]))
     else:
         form = ClienteForm()
         return render(request, template_name, {'form': form})
+
+class DeletarCliente(DeleteView):
+    model = Cliente
+    template_name_suffix = '/deletar'
+
 
 def IncluirProduto(request):
     template_name = 'salao/produto/incluir.html'
@@ -35,7 +55,7 @@ def IncluirProduto(request):
         form = ProdutoForm(request.POST)
         produto = form.save(commit=False)
         produto.save()
-        return redirect("produto:detalhes_produto", pk=produto.pk)
+        return redirect("salao:detalhes_produto", pk=produto.pk)
     else:
         form = ProdutoForm()
         return render(request, template_name, {'form': form})
@@ -46,7 +66,7 @@ def IncluirServico(request):
         form = ServicoForm(request.POST)
         servico = form.save(commit=False)
         servico.save()
-        return redirect("servico:detalhes_servico", pk=servico.pk)
+        return redirect("cliente:detalhes_servico", pk=servico.pk)
     else:
         form = ServicoForm()
         return render(request, template_name, {'form': form})

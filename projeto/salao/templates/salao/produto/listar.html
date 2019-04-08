@@ -1,0 +1,54 @@
+{% extends '../base.html' %}
+{% block titulo_pagina %}
+    Lista Clientes - Salão
+{% endblock titulo_pagina %}
+{% block h1_pagina %}
+    Lista de Clientes
+{% endblock h1_pagina %}
+{% block content %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Bairro</th>
+                  <th scope="col">Instagram</th>
+                  <th scope="col">Pontos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in object_list %}
+                <tr>
+                  <th scope="row">{{ cliente.id }}</th>
+                  <td>{{ cliente.nome_cliente }}</td>
+                  <td>{{ cliente.bairro_cliente }}</td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/{{ cliente.instagram_cliente }}/">@{{ cliente.instagram_cliente }}</a></td>
+                  <td>{{ cliente.pontos_cliente }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+
+        {% if is_paginated %}
+            <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% else %}
+          <li class=" page-link disabled"><span>Anterior</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item btn btn-primary active"><span>{{ i }} <span class="sr-only ">(current)</span></span></li>
+          {% else %}
+            <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li><a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a></li>
+        {% else %}
+          <li class="page-link active"><span>Próximo</span></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+{% endblock content %}

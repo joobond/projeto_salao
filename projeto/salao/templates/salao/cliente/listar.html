@@ -1,12 +1,13 @@
 {% extends '../base.html' %}
 {% block titulo_pagina %}
-    Listar Clientes - Salão
+    Lista Clientes - Salão
 {% endblock titulo_pagina %}
 {% block h1_pagina %}
     Lista de Clientes
 {% endblock h1_pagina %}
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <a data-toggle="modal" data-target="#incluirModal" id="incluir_cliente"><button class="btn btn-success btn-lg mb-3">Novo Cliente</button></a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -15,17 +16,105 @@
                   <th scope="col">Bairro</th>
                   <th scope="col">Instagram</th>
                   <th scope="col">Pontos</th>
+                  <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
-                {% for cliente in Cliente.objects.all() %}
+                {% for cliente in object_list %}
                 <tr>
-                  <th scope="row">{{ cliente.id }}</th>
-                  <td>{{ cliente.nome_cliente }}</td>
-                  <td>@{{ cliente.instagram_cliente }}</td>
+                  <th scope="row" id="id_cliente">{{ cliente.id }}</th>
+                  <td id="nome_cliente">{{ cliente.nome_cliente }}</td>
+                  <td>{{ cliente.bairro_cliente }}</td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/{{ cliente.instagram_cliente }}/">@{{ cliente.instagram_cliente }}</a></td>
                   <td>{{ cliente.pontos_cliente }}</td>
+                  <td><div class="btn-group">
+                              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ação
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'salao:detalhes_cliente' cliente.pk %}">Detalhes</a>
+                                <a class="dropdown-item" href="#">Editar</a>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deletarModal" id="apagar_cliente">Apagar</a>
+                              </div>
+                        </div>
+                  </td>
                 </tr>
                 {% endfor %}
             </tbody>
             </table>
+
+        {% if is_paginated %}
+            <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% else %}
+          <li class=" page-link disabled"><span>Anterior</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item btn btn-primary active"><span>{{ i }} <span class="sr-only ">(current)</span></span></li>
+          {% else %}
+            <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li><a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a></li>
+        {% else %}
+          <li class="page-link active"><span>Próximo</span></li>
+        {% endif %}
+      </ul>
+    {% endif %}
 {% endblock content %}
+{% block modal %}
+<!-- Modal Deletar -->
+    <div class="modal fade" id="deletarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      <form  method="post" action="">
+        {% csrf_token %}
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Deletar</button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+
+    <!-- Modal Incluir -->
+    <div class="modal fade" id="incluirModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Incluir Cliente</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+        <div class="col-md-8">
+                <form action="{% url 'salao:incluir_cliente'%}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </form>
+        </div>
+    </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="save btn btn-success">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
