@@ -21,9 +21,9 @@
             </thead>
             <tbody>
                 {% for cliente in object_list %}
-                <tr>
+                <tr id="{{ cliente.id }}">
                   <th scope="row" id="id_cliente">{{ cliente.id }}</th>
-                  <td id="nome_cliente">{{ cliente.nome_cliente }}</td>
+                  <td name="nome_cliente">{{ cliente.nome_cliente }}</td>
                   <td>{{ cliente.bairro_cliente }}</td>
                   <td><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/{{ cliente.instagram_cliente }}/">@{{ cliente.instagram_cliente }}</a></td>
                   <td>{{ cliente.pontos_cliente }}</td>
@@ -34,7 +34,8 @@
                               <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{% url 'salao:detalhes_cliente' cliente.pk %}">Detalhes</a>
                                 <a class="dropdown-item" href="#">Editar</a>
-                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deletarModal" id="apagar_cliente">Apagar</a>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deletarModal" name="apagar_cliente" onclick="apagarCliente({{ cliente.toJSON }})">Apagar</a>
+
                               </div>
                         </div>
                   </td>
@@ -68,14 +69,14 @@
 {% block modal %}
 <!-- Modal Deletar -->
     <div class="modal fade" id="deletarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-      <form  method="post" action="">
-        {% csrf_token %}
+      <form  method="post" action="{% url 'salao:deletar_cliente' %}">
+          <input type="hidden" value="" id="input_id" name="id">
+          {% csrf_token %}
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>

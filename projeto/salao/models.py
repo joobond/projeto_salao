@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import json
 
 class Cliente (models.Model):
     nome_cliente = models.CharField(max_length=200, null=False)
@@ -18,6 +19,10 @@ class Cliente (models.Model):
             if x.cliente_venda.id == self.id:
                 pontos = x.soma_pontos_venda
         return pontos
+
+    @property
+    def toJSON(self):
+        return json.dumps(self, default=lambda x: x.__dict__)
 
 
 class Produto(models.Model):

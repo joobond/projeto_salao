@@ -44,9 +44,13 @@ def IncluirCliente(request):
         form = ClienteForm()
         return render(request, template_name, {'form': form})
 
-class DeletarCliente(DeleteView):
-    model = Cliente
-    template_name_suffix = '/deletar'
+def DeletarCliente(request):
+    template_name='salao/produto/listar.html'
+    if request.method == "POST":
+        cliente = Cliente.objects.get(pk=request.POST.get("id"))
+        print(cliente)
+        cliente.delete()
+        return redirect("salao:listar_clientes")
 
 
 def IncluirProduto(request):
