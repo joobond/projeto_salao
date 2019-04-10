@@ -7,7 +7,7 @@
 {% endblock h1_pagina %}
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <a data-toggle="modal" data-target="#incluirModal" id="incluir_cliente"><button class="btn btn-success btn-lg mb-3">Novo Cliente</button></a>
+    <a href="{% url 'salao:incluir_cliente' %}"><button class="btn btn-success btn-lg mb-3">Novo Cliente</button></a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -93,6 +93,7 @@
 
     <!-- Modal Incluir -->
     <div class="modal fade" id="incluirModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="{% url 'salao:incluir_cliente'%}" method="post">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -102,14 +103,8 @@
             </button>
           </div>
           <div class="modal-body">
-              <div class="row">
-        <div class="col-md-8">
-                <form action="{% url 'salao:incluir_cliente'%}" method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                </form>
-        </div>
-    </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -117,5 +112,6 @@
           </div>
         </div>
       </div>
+        </form>
     </div>
 {% endblock %}

@@ -6,6 +6,7 @@
     Incluir Cliente - Rota 836
 {% endblock %}
 {% block content %}
+    <a href="{% url 'salao:listar_clientes' %}"><button class="btn btn-primary btn-lg mb-3">Lista de Clientes</button></a>
     <div class="row">
         <div class="col-md-8">
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

@@ -44,6 +44,17 @@ def IncluirCliente(request):
         form = ClienteForm()
         return render(request, template_name, {'form': form})
 
+def EditarCliente(request):
+    template_name = 'salao/cliente/incluir.html'
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+        cliente = form.save(commit=False)
+        cliente.save()
+        return HttpResponseRedirect(reverse('salao:detalhes_cliente', args=[cliente.pk]))
+    else:
+        form = ClienteForm()
+        return render(request, template_name, {'form': form})
+
 def DeletarCliente(request):
     template_name='salao/produto/listar.html'
     if request.method == "POST":
