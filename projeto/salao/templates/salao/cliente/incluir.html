@@ -1,16 +1,20 @@
 {% extends '../base.html' %}
 {% block h1_pagina %}
-    Incluir Cliente - Rota 836
+    Incluir Cliente
 {% endblock h1_pagina %}
 {% block titulo_pagina %}
-    Incluir Cliente - Rota 836
+    Incluir Cliente
 {% endblock %}
 {% block content %}
-    <a href="{% url 'salao:listar_clientes' %}"><button class="btn btn-primary btn-lg mb-3">Lista de Clientes</button></a>
+    <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-primary btn-lg mb-3">Lista de Clientes</button></a>
     <div class="row">
         <div class="col-md-8">
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                <form action="{% url 'salao:incluir_cliente'%}" method="post">
+            {% if editar %}
+                <form action="{% url 'salao:editar_cliente' cliente.pk %}" method="post">
+            {%  else %}
+                <form action="{% url 'salao:incluir_cliente' %}" method="post">
+            {%  endif %}
                     {% csrf_token %}
                     <div class="form-group">
                     {{ form.as_p }}

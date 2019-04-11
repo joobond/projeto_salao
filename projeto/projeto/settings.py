@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+NOME_SITE = 'Rota 836'
+
 
 # Application definition
 

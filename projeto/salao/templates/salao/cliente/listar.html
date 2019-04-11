@@ -1,6 +1,6 @@
 {% extends '../base.html' %}
 {% block titulo_pagina %}
-    Lista Clientes - Salão
+    Lista Clientes
 {% endblock titulo_pagina %}
 {% block h1_pagina %}
     Lista de Clientes
@@ -33,7 +33,7 @@
                               </button>
                               <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{% url 'salao:detalhes_cliente' cliente.pk %}">Detalhes</a>
-                                <a class="dropdown-item" href="#">Editar</a>
+                                <a class="dropdown-item" href="{% url 'salao:editar_cliente' cliente.pk %}">Editar</a>
                                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#deletarModal" name="apagar_cliente" onclick="apagarCliente({{ cliente.toJSON }})">Apagar</a>
 
                               </div>

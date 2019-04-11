@@ -27,11 +27,13 @@ class ListarClientes(ListView):
     context_object_name = 'clientes'
     paginate_by=10
 
+
 class ListarProdutos(ListView):
     template_name = 'salao/produto/listar.html'
     model = Produto
     context_object_name = 'produtos'
     paginate_by=10
+
 
 def IncluirCliente(request):
     template_name = 'salao/cliente/incluir.html'
@@ -44,16 +46,21 @@ def IncluirCliente(request):
         form = ClienteForm()
         return render(request, template_name, {'form': form})
 
-def EditarCliente(request):
+
+def EditarCliente(request, pk):
     template_name = 'salao/cliente/incluir.html'
+    cliente = get_object_or_404(Cliente, pk=pk)
+
     if request.method == "POST":
         form = ClienteForm(request.POST)
         cliente = form.save(commit=False)
+        cliente.pk = pk
         cliente.save()
-        return HttpResponseRedirect(reverse('salao:detalhes_cliente', args=[cliente.pk]))
+        return HttpResponseRedirect(reverse('salao:listar_clientes'))
     else:
-        form = ClienteForm()
-        return render(request, template_name, {'form': form})
+        form = ClienteForm(instance=cliente)
+        return render(request, template_name, {'form': form, 'editar':True, 'cliente':cliente})
+
 
 def DeletarCliente(request):
     template_name='salao/produto/listar.html'
