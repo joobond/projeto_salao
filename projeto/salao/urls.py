@@ -25,6 +25,8 @@ produto_patterns =[
     path('produto/listar/', views.ListarProdutos.as_view(), name='listar_produtos'),
     path('produto/<int:pk>/', views.DetailViewProduto.as_view(), name='detalhes_produto'),
     path('produto/incluir/', views.IncluirProduto, name='incluir_produto'),
+    path('produto/editar/<int:pk>/', views.EditarProduto, name='editar_produto'),
+    path('produto/deletar', views.DeletarProduto, name='deletar_produto'),
 ]
 
 urlpatterns = [

@@ -41,7 +41,7 @@ def IncluirCliente(request):
         form = ClienteForm(request.POST)
         cliente = form.save(commit=False)
         cliente.save()
-        return HttpResponseRedirect(reverse('salao:detalhes_cliente',args=[cliente.pk]))
+        return HttpResponseRedirect(reverse('salao:listar_clientes'))
     else:
         form = ClienteForm()
         return render(request, template_name, {'form': form})
@@ -63,10 +63,9 @@ def EditarCliente(request, pk):
 
 
 def DeletarCliente(request):
-    template_name='salao/produto/listar.html'
+    template_name='salao/cliente/listar.html'
     if request.method == "POST":
         cliente = Cliente.objects.get(pk=request.POST.get("id"))
-        print(cliente)
         cliente.delete()
         return redirect("salao:listar_clientes")
 
@@ -81,6 +80,30 @@ def IncluirProduto(request):
     else:
         form = ProdutoForm()
         return render(request, template_name, {'form': form})
+
+
+def DeletarProduto(request):
+    template_name='salao/produto/listar.html'
+    if request.method == "POST":
+        produto = Produto.objects.get(pk=request.POST.get("id"))
+        produto.delete()
+        return redirect("salao:listar_produtos")
+
+
+def EditarProduto(request, pk):
+    template_name = 'salao/produto/incluir.html'
+    produto = get_object_or_404(Produto, pk=pk)
+
+    if request.method == "POST":
+        form = ProdutoForm(request.POST)
+        produto = form.save(commit=False)
+        produto.pk = pk
+        produto.save()
+        return HttpResponseRedirect(reverse('salao:listar_produtos'))
+    else:
+        form = ProdutoForm(instance=produto)
+        return render(request, template_name, {'form': form, 'editar':True, 'produto':produto})
+
 
 def IncluirServico(request):
     template_name = 'salao/servico/incluir.html'

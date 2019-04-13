@@ -14,8 +14,8 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Descrição</th>
-                  <th scope="col">Bairro</th>
-                  <th scope="col">Instagram</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Valor</th>
                   <th scope="col">Pontos</th>
                   <th scope="col">Ação</th>
                 </tr>
@@ -23,19 +23,19 @@
             <tbody>
                 {% for produto in object_list %}
                 <tr id="{{ produto.id }}">
-                  <th scope="row" id="id_produto">{{ produto.id }}</th>
+                  <th scope="row" name="id_produto">{{ produto.id }}</th>
                   <td name="desc_produto">{{ produto.desc_produto }}</td>
-                  <td>{{ cliente.bairro_cliente }}</td>
-                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/{{ cliente.instagram_cliente }}/">@{{ cliente.instagram_cliente }}</a></td>
-                  <td>{{ cliente.pontos_cliente }}</td>
+                  <td>{{ produto.marca_produto }}</td>
+                  <td>R$ {{ produto.valor_produto }}</td>
+                  <td>{{ produto.pontos_produto }}</td>
                   <td><div class="btn-group">
                               <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Ação
                               </button>
                               <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{% url 'salao:detalhes_cliente' cliente.pk %}">Detalhes</a>
-                                <a class="dropdown-item" href="{% url 'salao:editar_cliente' cliente.pk %}">Editar</a>
-                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deletarModal" name="apagar_cliente" onclick="apagarCliente({{ cliente.toJSON }})">Apagar</a>
+                                <a class="dropdown-item" href="{% url 'salao:detalhes_produto' produto.pk %}">Detalhes</a>
+                                <a class="dropdown-item" href="{% url 'salao:editar_produto' produto.pk %}">Editar</a>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deletarModal" name="apagar_produto" onclick="apagarProduto({{ produto.toJSON }})">Apagar</a>
 
                               </div>
                         </div>
@@ -70,7 +70,7 @@
 {% block modal %}
 <!-- Modal Deletar -->
     <div class="modal fade" id="deletarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <form  method="post" action="{% url 'salao:deletar_cliente' %}">
+      <form  method="post" action="{% url 'salao:deletar_produto' %}">
           <input type="hidden" value="" id="input_id" name="id">
           {% csrf_token %}
         <div class="modal-dialog" role="document">
@@ -84,35 +84,11 @@
           <div class="modal-body">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="submit" class="btn btn-primary">Deletar</button>
           </div>
         </div>
       </div>
       </form>
-    </div>
-
-    <!-- Modal Incluir -->
-    <div class="modal fade" id="incluirModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form action="{% url 'salao:incluir_cliente'%}" method="post">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Incluir Cliente</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="submit" class="save btn btn-success">Salvar</button>
-          </div>
-        </div>
-      </div>
-        </form>
     </div>
 {% endblock %}

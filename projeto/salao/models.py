@@ -34,6 +34,10 @@ class Produto(models.Model):
     def __str__(self):
         return self.desc_produto
 
+    @property
+    def toJSON(self):
+        return json.dumps(self, default=lambda x: x.__dict__)
+
 class Servico(models.Model):
     desc_servico = models.CharField(max_length=200, null=False)
     pontos_servico = models.IntegerField(null=False)
