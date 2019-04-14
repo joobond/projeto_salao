@@ -6,7 +6,6 @@ from . import views
 app_name = 'salao'
 # URL para Clientes
 cliente_patterns =[
-    #path('', views.index, name='index'),
     path('cliente/<int:pk>/', views.DetailViewCliente.as_view(), name='detalhes_cliente'),
     path('cliente/incluir/', views.IncluirCliente, name='incluir_cliente'),
     path('cliente/editar/<int:pk>/', views.EditarCliente, name='editar_cliente'),
@@ -30,6 +29,7 @@ produto_patterns =[
 ]
 
 urlpatterns = [
+    path('', views.Index.as_view(), name='index'),
     path('', include(cliente_patterns)),
     path('', include(produto_patterns)),
     path('', include(servico_patterns)),

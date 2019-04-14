@@ -4,10 +4,12 @@ from django.template import loader
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.list import ListView
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, TemplateView
 from .forms import ClienteForm, ProdutoForm, ServicoForm
 from salao.models import Cliente, Servico, Produto
 
+class Index(TemplateView):
+  template_name = "salao/index.html"
 
 class DetailViewCliente(generic.DetailView):
     model = Cliente
