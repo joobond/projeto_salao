@@ -23,7 +23,7 @@
                 {% for servico in object_list %}
                 <tr id="{{ servico.id }}">
                   <th scope="row" name="id_servico">{{ servico.id }}</th>
-                  <td name="desc_produto">{{ servico.desc_servico }}</td>
+                  <td name="desc_servico">{{ servico.desc_servico }}</td>
                   <td>R$ {{ servico.valor_servico }}</td>
                   <td>{{ servico.pontos_servico }}</td>
                   <td><div class="btn-group">
