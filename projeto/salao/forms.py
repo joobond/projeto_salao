@@ -39,6 +39,11 @@ class ProdutoForm(forms.ModelForm):
         }
 
 class ServicoForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ServicoForm, self).__init__(*args, **kwargs)
+        self.fields['desc_servico'].widget.attrs = {'class': 'form-group form-control', 'type':'text', 'placeholder':'Corte Padrão'}
+        self.fields['pontos_servico'].widget.attrs = {'class': 'form-group form-control', 'type':'number', 'placeholder':'666'}
+        self.fields['valor_servico'].widget.attrs = {'class': 'form-group form-control', 'type':'number', 'placeholder':'R$ 55'}
     class Meta:
         model = Servico
         fields = ('desc_servico', 'pontos_servico', 'valor_servico',)

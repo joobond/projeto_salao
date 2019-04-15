@@ -1,0 +1,92 @@
+{% extends '../base.html' %}
+{% load staticfiles %}
+{% block titulo_pagina %}
+    Lista Serviços
+{% endblock titulo_pagina %}
+{% block h1_pagina %}
+    Lista de Serviços
+{% endblock h1_pagina %}
+{% block content %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <a href="{% url 'salao:incluir_servico' %}"><button class="btn btn-success btn-lg mb-3"><img src="{% static 'img/produto.svg' %}" width="30px" height="30px"> Novo Serviço</button></a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Pontos</th>
+                  <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for servico in object_list %}
+                <tr id="{{ servico.id }}">
+                  <th scope="row" name="id_servico">{{ servico.id }}</th>
+                  <td name="desc_produto">{{ servico.desc_servico }}</td>
+                  <td>R$ {{ servico.valor_servico }}</td>
+                  <td>{{ servico.pontos_servico }}</td>
+                  <td><div class="btn-group">
+                              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ação
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'salao:detalhes_servico' servico.pk %}">Detalhes</a>
+                                <a class="dropdown-item" href="{% url 'salao:editar_servico' servico.pk %}">Editar</a>
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#deletarModal" name="apagar_servico" onclick="apagarServico({{ servico.toJSON }})">Apagar</a>
+
+                              </div>
+                        </div>
+                  </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+
+        {% if is_paginated %}
+            <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% else %}
+          <li class=" page-link disabled"><span>Anterior</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item btn btn-primary active"><span>{{ i }} <span class="sr-only ">(current)</span></span></li>
+          {% else %}
+            <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li><a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a></li>
+        {% else %}
+          <li class="page-link active"><span>Próximo</span></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+{% endblock content %}
+{% block modal %}
+<!-- Modal Deletar -->
+    <div class="modal fade" id="deletarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <form  method="post" action="{% url 'salao:deletar_servico' %}">
+          <input type="hidden" value="" id="input_id" name="id">
+          {% csrf_token %}
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-primary">Deletar</button>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+{% endblock %}

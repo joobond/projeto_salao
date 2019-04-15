@@ -125,4 +125,33 @@ def IncluirServico(request):
         return render(request, template_name, {'form': form})
 
 
+def EditarServico(request, pk):
+    template_name = 'salao/servico/incluir.html'
+    servico = get_object_or_404(Servico, pk=pk)
+
+    if request.method == "POST":
+        form = ServicoForm(request.POST)
+        servico = form.save(commit=False)
+        servico.pk = pk
+        servico.save()
+        return HttpResponseRedirect(reverse('salao:listar_servicos'))
+    else:
+        form = ServicoForm(instance=servico)
+        return render(request, template_name, {'form': form, 'editar':True, 'servico':servico})
+
+
+class ListarServicos(ListView):
+    template_name = 'salao/servico/listar.html'
+    model = Servico
+    context_object_name = 'servicos'
+    paginate_by=10
+
+
+def DeletarServico(request):
+    template_name='salao/servico/listar.html'
+    if request.method == "POST":
+        servico = Servico.objects.get(pk=request.POST.get("id"))
+        servico.delete()
+        return redirect("salao:listar_servicos")
+
 

@@ -16,7 +16,10 @@ cliente_patterns =[
 # URL para Serviço
 servico_patterns =[
     path('servico/<int:pk>/', views.DetailViewServico.as_view(), name='detalhes_servico'),
-    path('servico/incluir/', views.IncluirServico, name='incluir_Servico'),
+    path('servico/incluir/', views.IncluirServico, name='incluir_servico'),
+    path('servico/listar/', views.ListarServicos.as_view(), name='listar_servicos'),
+    path('servico/editar/<int:pk>/', views.EditarServico, name='editar_servico'),
+    path('servico/deletar', views.DeletarServico, name='deletar_servico'),
 ]
 
 # URL para Produto

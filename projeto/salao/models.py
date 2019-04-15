@@ -46,6 +46,10 @@ class Servico(models.Model):
     def __str__(self):
         return self.desc_servico
 
+    @property
+    def toJSON(self):
+        return json.dumps(self, default=lambda x: x.__dict__)
+
 class Reserva(models.Model):
     data_hora_reserva = models.DateTimeField(null = False)
     cliente_reserva = models.ForeignKey(Cliente,on_delete=models.CASCADE, null = False)
