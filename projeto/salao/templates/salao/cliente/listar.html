@@ -1,4 +1,5 @@
 {% extends '../base.html' %}
+{% load staticfiles %}
 {% block titulo_pagina %}
     Lista Clientes
 {% endblock titulo_pagina %}
@@ -7,7 +8,7 @@
 {% endblock h1_pagina %}
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <a href="{% url 'salao:incluir_cliente' %}"><button class="btn btn-success btn-lg mb-3">Novo Cliente</button></a>
+    <a href="{% url 'salao:incluir_cliente' %}"><button class="btn btn-success btn-lg mb-3"><img src="{% static 'img/cliente.svg' %}" height="30px" width="30px"> Novo Cliente</button></a>
         <table class="table table-striped">
             <thead>
                 <tr>

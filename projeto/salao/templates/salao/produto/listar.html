@@ -8,7 +8,7 @@
 {% endblock h1_pagina %}
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <a href="{% url 'salao:incluir_produto' %}"><button class="btn btn-success btn-lg mb-3"><img href="{% static 'img/produto.svg' %}" width="15px" height="15px"> Novo Produto</button></a>
+    <a href="{% url 'salao:incluir_produto' %}"><button class="btn btn-success btn-lg mb-3"><img src="{% static 'img/produto.svg' %}" width="30px" height="30px"> Novo Produto</button></a>
         <table class="table table-striped">
             <thead>
                 <tr>
