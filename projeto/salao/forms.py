@@ -47,3 +47,23 @@ class ServicoForm(forms.ModelForm):
     class Meta:
         model = Servico
         fields = ('desc_servico', 'pontos_servico', 'valor_servico',)
+        labels = {
+            'desc_servico': 'Descrição do Serviço',
+            'pontos_servico': 'Pontos do Serviço',
+            'valor_servico': 'Valor do Serviço',
+        }
+
+
+class ReservaForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ReservaForm, self).__init__(*args, **kwargs)
+        self.fields['data_hora_reserva'].widget.attrs = {'class': 'form-group form-control', 'type':'date', 'placeholder':'##/##/##'}
+        self.fields['pontos_servico'].widget.attrs = {'class': 'form-group form-control', 'type':'number', 'placeholder':'666'}
+        self.fields['valor_servico'].widget.attrs = {'class': 'form-group form-control', 'type':'number', 'placeholder':'R$ 55'}
+    class Meta:
+        model = Reserva
+        fields = ('data_hora_reserva', 'cliente_reserva',)
+        labels = {
+            'data_hora_reserva': 'Data e Horário da Reserva',
+            'cliente_reserva': 'Cliente',
+        }
