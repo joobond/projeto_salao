@@ -4,15 +4,16 @@
     Incluir Serviço - Rota 836
 {% endblock h1_pagina %}
 {% block content %}
-   <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-primary btn-lg mb-3">Lista de Serviços</button></a>
+{#   <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-primary btn-lg mb-3">Lista de Serviços</button></a>#}
     <div class="row">
         <div class="col-md-8">
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-            {% if editar %}
-                <form action="{% url 'salao:editar_servico' servico.pk %}" method="post">
-            {%  else %}
-                <form action="{% url 'salao:incluir_servico' %}" method="post">
-            {%  endif %}
+{#            {% if editar %}#}
+{#                <form action="{% url 'salao:editar_servico' servico.pk %}" method="post">#}
+{#            {%  else %}#}
+{#                <form action="{% url 'salao:incluir_servico' %}" method="post">#}
+{#            {%  endif %}#}
+                    <form action="{% url 'salao:incluir_reserva' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                     {{ form.as_p }}

@@ -31,9 +31,15 @@ produto_patterns =[
     path('produto/deletar', views.DeletarProduto, name='deletar_produto'),
 ]
 
+# URL para Reserva
+reserva_patterns =[
+    path('reserva/incluir/', views.IncluirReserva, name='incluir_reserva'),
+]
+
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('', include(cliente_patterns)),
     path('', include(produto_patterns)),
     path('', include(servico_patterns)),
+    path('', include(reserva_patterns)),
 ]

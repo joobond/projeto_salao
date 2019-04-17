@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.list import ListView
 from django.views.generic import DeleteView, TemplateView
-from .forms import ClienteForm, ProdutoForm, ServicoForm
+from .forms import ClienteForm, ProdutoForm, ServicoForm, ReservaForm
 from salao.models import Cliente, Servico, Produto
 
 class Index(TemplateView):
@@ -119,7 +119,7 @@ def IncluirServico(request):
         form = ServicoForm(request.POST)
         servico = form.save(commit=False)
         servico.save()
-        return redirect("cliente:detalhes_servico", pk=servico.pk)
+        return redirect("salao:detalhes_servico", pk=servico.pk)
     else:
         form = ServicoForm()
         return render(request, template_name, {'form': form})
@@ -153,5 +153,19 @@ def DeletarServico(request):
         servico = Servico.objects.get(pk=request.POST.get("id"))
         servico.delete()
         return redirect("salao:listar_servicos")
+
+
+# Reserva
+
+def IncluirReserva(request):
+    template_name = 'salao/reserva/incluir.html'
+    if request.method == "POST":
+        form = ReservaForm(request.POST)
+        reserva = form.save(commit=False)
+        reserva.save()
+        return redirect("salao:index", pk=reserva.pk)
+    else:
+        form = ReservaForm()
+        return render(request, template_name, {'form': form})
 
 
