@@ -51,12 +51,13 @@ class Servico(models.Model):
         return json.dumps(self, default=lambda x: x.__dict__)
 
 class Reserva(models.Model):
-    data_hora_reserva = models.DateTimeField(null = False)
+    data_reserva = models.DateField(null = False, default='2018-05-05')
+    hora_reserva = models.TimeField(null = False, default='08:08:00')
     cliente_reserva = models.ForeignKey(Cliente,on_delete=models.CASCADE, null = False)
 
 
     def __str__(self):
-        return str(self.data_hora_reserva) + ":" +str(self.cliente_reserva)
+        return str(self.data_reserva) + ":" +str(self.cliente_reserva)
 
 class Venda(models.Model):
     data_hora_venda = models.DateTimeField('date published')

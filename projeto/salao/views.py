@@ -163,7 +163,7 @@ def IncluirReserva(request):
         form = ReservaForm(request.POST)
         reserva = form.save(commit=False)
         reserva.save()
-        return redirect("salao:index", pk=reserva.pk)
+        return redirect("salao:index")
     else:
         form = ReservaForm()
         return render(request, template_name, {'form': form})

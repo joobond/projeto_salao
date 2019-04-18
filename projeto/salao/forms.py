@@ -1,5 +1,6 @@
 from django import forms
 from salao.models import Cliente, Venda, Reserva, Servico, Produto
+from django.conf import settings
 
 class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -57,17 +58,19 @@ class ServicoForm(forms.ModelForm):
 class ReservaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ReservaForm, self).__init__(*args, **kwargs)
-        self.fields['data_hora_reserva'].widget.attrs = {'type':'datetime-local', 'class': 'form-group form-control', 'placeholder':'##/##/####'}
+        self.fields['data_reserva'].widget.attrs = {'type':'date', 'class': 'form-group form-control', 'placeholder':'##/##/####'}
+        self.fields['hora_reserva'].widget.attrs = {'type':'hour', 'class': 'form-group form-control', 'placeholder':'-:-'}
         self.fields['cliente_reserva'].widget.attrs = {'class': 'form-group form-control'}
 
     class Meta:
         model = Reserva
-        fields = ('data_hora_reserva', 'cliente_reserva',)
+        fields = ('data_reserva', 'hora_reserva','cliente_reserva',)
         labels = {
-            'data_hora_reserva': 'Data e Horário da Reserva',
+            'data_reserva': 'Data da Reserva',
+            'hora_reserva': 'Hora da Reserva',
             'cliente_reserva': 'Cliente',
         }
         widgets = {
             'cliente_reserva': forms.Select(attrs={'class': 'select'}),
-            'data_hora_reserva': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'data_reserva': forms.DateTimeInput(attrs={'type': 'date'}),
         }
