@@ -34,6 +34,7 @@ produto_patterns =[
 # URL para Reserva
 reserva_patterns =[
     path('reserva/incluir/', views.IncluirReserva, name='incluir_reserva'),
+    path('reserva/hoje/', views.ReservasHoje, name='reservas_hoje'),
 ]
 
 urlpatterns = [

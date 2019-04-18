@@ -6,7 +6,8 @@ from django.views import generic
 from django.views.generic.list import ListView
 from django.views.generic import DeleteView, TemplateView
 from .forms import ClienteForm, ProdutoForm, ServicoForm, ReservaForm
-from salao.models import Cliente, Servico, Produto
+from salao.models import Cliente, Servico, Produto, Reserva, Venda
+from datetime import date
 
 class Index(TemplateView):
   template_name = "salao/index.html"
@@ -14,7 +15,7 @@ class Index(TemplateView):
 # Produto
 class DetailViewProduto(generic.DetailView):
     model = Produto
-    template_name = 'salao/produto/detalhes.html'
+    template_name = 'salao/produto/reservas_de_hoje.html'
 
 
 class ListarProdutos(ListView):
@@ -62,7 +63,7 @@ def EditarProduto(request, pk):
 # Cliente
 class DetailViewCliente(generic.DetailView):
     model = Cliente
-    template_name = 'salao/cliente/detalhes.html'
+    template_name = 'salao/cliente/reservas_de_hoje.html'
 
 
 class ListarClientes(ListView):
@@ -110,7 +111,7 @@ def DeletarCliente(request):
 # Serviço
 class DetailViewServico(generic.DetailView):
     model = Servico
-    template_name = 'salao/servico/detalhes.html'
+    template_name = 'salao/servico/reservas_de_hoje.html'
 
 
 def IncluirServico(request):
@@ -167,5 +168,15 @@ def IncluirReserva(request):
     else:
         form = ReservaForm()
         return render(request, template_name, {'form': form})
+
+
+def ReservasHoje(request):
+    template_name='salao/reserva/reservas_de_hoje.html'
+    reservas = []
+    for reserva in Reserva.objects.all():
+        if reserva.data_reserva == date.today():
+            reservas.append(reserva)
+    return render(request,template_name, {'reservas':reservas})
+
 
 
