@@ -10,7 +10,7 @@ class Cliente (models.Model):
     #ultima_alteracao = models.ForeignKey(User, on_delete=models.CASCADE) #Campo de quem fez a ultima alteração
 
     def __str__(self):
-        return self.nome_cliente + " Pontos: " + str(self.pontos_cliente)
+        return self.nome_cliente
 
     @property
     def pontos_cliente(self):
