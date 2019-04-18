@@ -1,0 +1,43 @@
+body, html {
+            height: 100%;
+        }
+        .bg {
+            background-image: url('../img/background.jpg');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        @media only screen and (max-width: 767px) {
+            body {
+                background-image: url('../img/background1.jpg');
+                height: 100%;
+            }
+            .titulo-site{
+                font-size: 3em;
+            }
+            .subtitulo-site{
+                font-size: 1em;
+            }
+	    }
+        .titulo-site{
+            font-size: 5em;
+            text-align: center;
+            text-transform: uppercase;
+            color:white;
+            font-family: 'Josefin Sans', sans-serif;
+            margin: 0 auto;
+        }
+        .subtitulo-site{
+            font-family: 'East Sea Dokdo', cursive;
+            font-size:3em;
+            text-align: center;
+            color:white;
+        }
+        .btn-login{
+            font-family: 'Josefin Sans', sans-serif;
+        }
