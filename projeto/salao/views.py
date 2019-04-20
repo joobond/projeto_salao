@@ -107,6 +107,11 @@ def DeletarCliente(request):
         cliente.delete()
         return redirect("salao:listar_clientes")
 
+def MelhoresClientes(request):
+    template_name='salao/cliente/melhores.html'
+    clientes = sorted(Cliente.objects.all(), key=lambda t: t.pontos_cliente, reverse=True)[:5]
+    return render(request, template_name, {'clientes': clientes})
+
 
 # Serviço
 class DetailViewServico(generic.DetailView):
@@ -164,7 +169,7 @@ def IncluirReserva(request):
         form = ReservaForm(request.POST)
         reserva = form.save(commit=False)
         reserva.save()
-        return redirect("salao:index")
+        return redirect("salao:reserva_hoje")
     else:
         form = ReservaForm()
         return render(request, template_name, {'form': form})
@@ -176,7 +181,7 @@ def ReservasHoje(request):
     for reserva in Reserva.objects.all():
         if reserva.data_reserva == date.today():
             reservas.append(reserva)
-    return render(request,template_name, {'reservas':reservas})
+    return render(request,template_name, {'reservas':reservas, 'hoje':date.today()})
 
 
 

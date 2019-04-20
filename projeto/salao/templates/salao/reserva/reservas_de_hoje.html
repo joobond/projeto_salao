@@ -8,6 +8,7 @@
 {% endblock h1_pagina %}
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <a href="{% url 'salao:incluir_reserva' %}"><button class="btn btn-success btn-lg mb-3"><img src="{% static 'img/calendario.svg' %}" width="30px" height="30px"> Nova Reserva</button></a>
             <div class="d-flex flex-wrap">
     {% for reserva in reservas %}
             <div class="col-md-4">
@@ -18,6 +19,6 @@
                 </div>
               </div>
             </div>
-            {% endfor %}
+    {% endfor %}
             </div>
 {% endblock content %}

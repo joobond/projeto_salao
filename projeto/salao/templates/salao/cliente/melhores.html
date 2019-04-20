@@ -1,0 +1,24 @@
+{% extends '../base.html' %}
+{% load staticfiles %}
+{% block titulo_pagina %}
+    Melhores Clientes
+{% endblock titulo_pagina %}
+{% block h1_pagina %}
+    Melhores Clientes
+{% endblock h1_pagina %}
+{% block content %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <a href="{% url 'salao:incluir_cliente' %}"><button class="btn btn-success btn-lg mb-3"><img src="{% static 'img/cliente.svg' %}" height="30px" width="30px"> Novo Cliente</button></a>
+    <div class="d-flex flex-wrap">
+    {% for cliente in clientes %}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <p class="card-text font-weight-bold">{{ cliente.nome_cliente }}</p>
+                  <p class="card-text ">{{ cliente.pontos_cliente }} pontos</p>
+                </div>
+              </div>
+            </div>
+    {% endfor %}
+    </div>
+{% endblock content %}

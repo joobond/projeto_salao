@@ -52,7 +52,7 @@ class Servico(models.Model):
 
 class Reserva(models.Model):
     data_reserva = models.DateField(null = False, default='2018-05-05')
-    hora_reserva = models.TimeField(null = False, default='08:08:00')
+    hora_reserva = models.TimeField(null = False, default='00:00:00')
     cliente_reserva = models.ForeignKey(Cliente,on_delete=models.CASCADE, null = False)
 
 
