@@ -38,10 +38,16 @@ reserva_patterns =[
     path('reserva/hoje/', views.ReservasHoje, name='reservas_hoje'),
 ]
 
+# URL para Venda
+venda_patterns =[
+    path('venda/', views.FazerVenda, name='fazer_venda'),
+]
+
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('', include(cliente_patterns)),
     path('', include(produto_patterns)),
     path('', include(servico_patterns)),
     path('', include(reserva_patterns)),
+    path('', include(venda_patterns)),
 ]

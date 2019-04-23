@@ -15,9 +15,9 @@ class Cliente (models.Model):
     @property
     def pontos_cliente(self):
         pontos = 0
-        for x in Venda.objects.all():
-            if x.cliente_venda.id == self.id:
-                pontos = x.soma_pontos_venda
+        vendas = self.venda_set.all()
+        for x in vendas:
+            pontos += x.soma_pontos_venda
         return pontos
 
     @property
@@ -60,7 +60,7 @@ class Reserva(models.Model):
         return str(self.data_reserva) + ":" +str(self.cliente_reserva)
 
 class Venda(models.Model):
-    data_hora_venda = models.DateTimeField('date published')
+    data_hora_venda = models.DateTimeField(auto_now_add=True)
     cliente_venda = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False)
     servico_venda = models.ManyToManyField(Servico, blank=True)
     produto_venda = models.ManyToManyField(Produto, blank=True)

@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.list import ListView
 from django.views.generic import DeleteView, TemplateView
-from .forms import ClienteForm, ProdutoForm, ServicoForm, ReservaForm
+from .forms import ClienteForm, ProdutoForm, ServicoForm, ReservaForm, VendaForm
 from salao.models import Cliente, Servico, Produto, Reserva, Venda
 from datetime import date
 
@@ -169,7 +169,7 @@ def IncluirReserva(request):
         form = ReservaForm(request.POST)
         reserva = form.save(commit=False)
         reserva.save()
-        return redirect("salao:reserva_hoje")
+        return redirect("salao:reservas_hoje")
     else:
         form = ReservaForm()
         return render(request, template_name, {'form': form})
@@ -182,6 +182,20 @@ def ReservasHoje(request):
         if reserva.data_reserva == date.today():
             reservas.append(reserva)
     return render(request,template_name, {'reservas':reservas, 'hoje':date.today()})
+
+
+#Venda
+
+def FazerVenda(request):
+    template_name = 'salao/venda/incluir.html'
+    if request.method == "POST":
+        form = VendaForm(request.POST)
+        venda = form.save(commit=False)
+        venda.save()
+        return redirect("salao:index")
+    else:
+        form = VendaForm()
+        return render(request, template_name, {'form': form})
 
 
 

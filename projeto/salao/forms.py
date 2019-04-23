@@ -74,3 +74,23 @@ class ReservaForm(forms.ModelForm):
             'cliente_reserva': forms.Select(attrs={'class': 'select'}),
             'data_reserva': forms.DateTimeInput(attrs={'type': 'date'}),
         }
+
+
+class VendaForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(VendaForm, self).__init__(*args, **kwargs)
+        self.fields['cliente_venda'].widget.attrs = {'type': 'date', 'class': 'form-group form-control'}
+        self.fields['servico_venda'].widget.attrs = {'type': 'hour', 'class': 'form-group form-control'}
+        self.fields['produto_venda'].widget.attrs = {'class': 'form-group form-control'}
+
+    class Meta:
+        model = Venda
+        fields = ('cliente_venda', 'servico_venda','produto_venda',)
+        labels = {
+            'cliente_venda': 'Cliente',
+            'servico_venda': 'Serviços',
+            'produto_venda': 'Produtos',
+        }
+        widgets = {
+            'cliente_venda': forms.Select(attrs={'class': 'select'}),
+        }
