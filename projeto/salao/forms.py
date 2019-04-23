@@ -79,8 +79,10 @@ class ReservaForm(forms.ModelForm):
 class VendaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(VendaForm, self).__init__(*args, **kwargs)
-        self.fields['cliente_venda'].widget.attrs = {'type': 'date', 'class': 'form-group form-control'}
-        self.fields['servico_venda'].widget.attrs = {'type': 'hour', 'class': 'form-group form-control'}
+        self.fields['cliente_venda'].widget.attrs = {'class': 'form-group form-control'}
+        self.fields['servico_venda'].widget.attrs = {'class': 'form-group form-control'}
+        self.fields['servico_venda'].queryset=Servico.objects.all()
+        self.fields['produto_venda'].queryset=Produto.objects.all()
         self.fields['produto_venda'].widget.attrs = {'class': 'form-group form-control'}
 
     class Meta:

@@ -190,8 +190,8 @@ def FazerVenda(request):
     template_name = 'salao/venda/incluir.html'
     if request.method == "POST":
         form = VendaForm(request.POST)
-        venda = form.save(commit=False)
-        venda.save()
+        if form.is_valid():
+            form.save()
         return redirect("salao:index")
     else:
         form = VendaForm()
