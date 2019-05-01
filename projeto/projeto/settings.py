@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 NOME_SITE = 'Rota 836'
 
+LOGIN_REDIRECT_URL = 'salao:index'
+
 
 # Application definition
 

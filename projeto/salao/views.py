@@ -1,16 +1,37 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import  HttpResponseRedirect
+from django.contrib.auth import authenticate, login
 from django.template import loader
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.views.generic.list import ListView
 from django.views.generic import DeleteView, TemplateView
-from .forms import ClienteForm, ProdutoForm, ServicoForm, ReservaForm, VendaForm
+from .forms import ClienteForm, ProdutoForm, ServicoForm, ReservaForm, VendaForm, LoginForm
 from salao.models import Cliente, Servico, Produto, Reserva, Venda
 from datetime import date
 
 class Index(TemplateView):
   template_name = "salao/index.html"
+
+def Login(request):
+    template_name = "salao/reserva/reservas_de_hoje.html"
+    login_template = "salao/login.html"
+    mensagem_erro = "Não foi possível fazer login. Usuário ou Senha inválidos."
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'],password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('salao:reservas_hoje')
+            else:
+                return render(request, login_template, {'form': form, 'erro':mensagem_erro})
+    else:
+        form = LoginForm()
+        return render(request, 'salao/login.html', {'form': form})
+
 
 # Produto
 class DetailViewProduto(generic.DetailView):

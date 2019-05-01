@@ -1,6 +1,28 @@
 from django import forms
 from salao.models import Cliente, Venda, Reserva, Servico, Produto
 from django.conf import settings
+from django.contrib.auth.models import User
+
+class LoginForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs = {'class': 'form-control'}
+        self.fields['password'].widget.attrs = {'class': 'form-control'}
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+        labels = {
+            'username': None,
+            'password': None,
+        }
+        help_texts = {
+            'username': None,
+            'password': None,
+        }
+        widgets = {
+            'password': forms.PasswordInput,
+        }
 
 class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

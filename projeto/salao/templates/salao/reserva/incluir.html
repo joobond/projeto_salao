@@ -16,7 +16,7 @@
 {#            {%  else %}#}
 {#                <form action="{% url 'salao:incluir_servico' %}" method="post">#}
 {#            {%  endif %}#}
-                    <form action="{% url 'salao:incluir_reserva' %}" method="post">
+                    <form action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
                     {{ form.as_p }}
