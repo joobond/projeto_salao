@@ -15,7 +15,11 @@
     <div class="bg">
         <p class="titulo-site"> Barbearia Rota 836</p>
         <p class="subtitulo-site"> Um novo conceito de barbearia</p>
-        <a href={% url 'salao:login' %}><button class="btn btn-dark btn-lg btn-login">LOGIN</button></a>
+        {% if is_authenticated %}
+            <a href="{% url 'salao:reservas_hoje' %}"><button class="btn btn-dark btn-lg btn-login">LOGIN</button></a>
+        {% else %}
+            <a href="{% url 'salao:login' %}"><button class="btn btn-dark btn-lg btn-login">LOGIN</button></a>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -46,6 +46,7 @@ venda_patterns =[
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('login', views.Login, name='login'),
+    path('logout', views.Logout, name='logout'),
     path('', include(cliente_patterns)),
     path('', include(produto_patterns)),
     path('', include(servico_patterns)),

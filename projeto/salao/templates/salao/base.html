@@ -10,18 +10,73 @@
     <title>{% block titulo_pagina %}{% endblock titulo_pagina %} - Rota 836</title>
 </head>
 <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-bold"><a href="{% url 'salao:index' %}" style="text-decoration: none" class="text-dark">Rota 836</a></h5>
-      <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="{% url 'salao:index' %}">Início</a>
-        <a class="p-2 text-dark" href="{% url 'salao:listar_clientes' %}">Clientes</a>
-        <a class="p-2 text-dark" href="#">Relatórios</a>
-        <a class="p-2 text-dark" href="{% url 'salao:listar_produtos' %}">Produtos</a>
-        <a class="p-2 text-dark" href="../../admin">Login</a>
-      </nav>
-      <a class="btn btn-outline-primary" href="{% url 'salao:fazer_venda' %}">Fazer Venda</a>
-      <a class="ml-2 btn btn-outline-success" href="{% url 'salao:reservas_hoje' %}">Reservas de Hoje</a>
-    </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white border-bottom box-shadow">
+        <a class="navbar-brand font-weight-bold" href="{% url 'salao:index' %}">Rota 836</a>
+        <a class="btn btn-outline-primary" href="{% url 'salao:fazer_venda' %}">Fazer Venda</a>
+        <a class="ml-2 btn btn-outline-success" href="{% url 'salao:reservas_hoje' %}">Reservas de Hoje</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-lg-auto">
+             <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reserva
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'salao:reservas_hoje' %}">Reservas de amanhã</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'salao:incluir_reserva' %}">Incluir Reserva</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cliente
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'salao:listar_clientes' %}">Lista de Clientes</a>
+                        <a class="dropdown-item" href="{% url 'salao:melhores_clientes' %}">Melhores Clientes</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'salao:incluir_cliente' %}">Incluir Cliente</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Produto
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'salao:listar_produtos' %}">Lista de Produtos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'salao:incluir_produto' %}">Incluir Produto</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Serviço
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'salao:listar_servicos' %}">Lista de Serviços</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'salao:incluir_servico' %}">Incluir Serviço</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Venda
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'salao:listar_servicos' %}">Lista de Serviços</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'salao:incluir_servico' %}">Incluir Serviço</a>
+                    </div>
+                </li>
+            </ul>
+            <a class="nav-link disabled font-weight-bold" href="#">Usuário: {{user}}</a>
+            <a class="btn btn-danger" href="{% url 'logout' %}">Sair</a>
+
+
+
+  </div>
+</nav>
         <div class="content container mt-5">
             <div class="page-header">
                 <h1 class="display mb-5">{% block h1_pagina %}{% endblock h1_pagina %}</h1>
