@@ -2,8 +2,9 @@ from django import forms
 from salao.models import Cliente, Venda, Reserva, Servico, Produto
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 
-class LoginForm(forms.ModelForm):
+'''class LoginForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs = {'class': 'form-control'}
@@ -22,7 +23,14 @@ class LoginForm(forms.ModelForm):
         }
         widgets = {
             'password': forms.PasswordInput,
-        }
+        }'''
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs = {'class': 'form-control'}
+        self.fields['password'].widget.attrs = {'class': 'form-control'}
 
 class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

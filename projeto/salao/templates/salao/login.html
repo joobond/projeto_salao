@@ -19,13 +19,20 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4 font-weight-bold">ROTA 836</h3>
-              {% if user_logout %}
-                  <div class="alert alert-danger" role="alert">
-                    {{user_logout}} fez logout!
+                {% if erro %}
+                  <div class="container alert alert-danger" role="alert">
+                    {{erro}}
                   </div>
               {% endif %}
-              <form method="post" action="{% url 'login' %}">
+              <h3 class="login-heading mb-4 font-weight-bold">ROTA 836</h3>
+              {% if not user.is_anonymous %}
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{user}} fez logout!
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+                  </div>
+              {% endif %}
+              <form method="post" action="{% url 'salao:login' %}">
                   {{ form.as_p }}
                   {% csrf_token %}
                 <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Entrar</button>

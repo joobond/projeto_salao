@@ -18,3 +18,4 @@ function apagarServico(obj) {
     document.querySelector('.modal-title').innerHTML = 'Deseja realmente apagar '+obj.desc_servico+'?';
     document.querySelector('.modal-body').innerHTML = 'Esta ação será irreversível, você irá apagar os dados do produto '+obj.desc_servico+'!';
 }
+

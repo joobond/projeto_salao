@@ -19,29 +19,39 @@ class Index(TemplateView):
       context['is_authenticated'] = self.request.user.is_authenticated
       return context
 
+from django.contrib.auth.forms import AuthenticationForm
+
 def Login(request):
+    print("LOGIN")
     template_name = "salao/reserva/reservas_de_hoje.html"
     login_template = "salao/login.html"
     mensagem_erro = "Não foi possível fazer login. Usuário ou Senha inválidos."
     if request.method == 'POST':
+        #form = LoginForm(request.POST)
         form = LoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(username=cd['username'],password=cd['password'])
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponseRedirect('salao:reservas_hoje')
-            else:
-                return render(request, login_template, {'form': form, 'erro':mensagem_erro})
+        print(request.POST)
+        #if form.is_valid():
+
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        print(user)
+        if user is not None and user.is_active:
+            login(request, user)
+            return render(request, template_name)
+        return render(request, login_template, {'form': form, 'erro': mensagem_erro})
     else:
+        #form = LoginForm()
         form = LoginForm()
         return render(request, 'salao/login.html', {'form': form})
 
 
 def Logout(request):
+    login_template = "salao/login.html"
+    form = LoginForm()
+    user = request.user
     logout(request)
-    return render(request, 'index.html'{'user_logout':request.user})
+    return render(request, login_template, {'form': form, 'user':user})
 
 # Produto
 @method_decorator(login_required, name='dispatch')
