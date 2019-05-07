@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 import json
 
 class Cliente (models.Model):
@@ -51,7 +52,7 @@ class Servico(models.Model):
         return json.dumps(self, default=lambda x: x.__dict__)
 
 class Reserva(models.Model):
-    data_reserva = models.DateField(null = False, default='2018-05-05')
+    data_reserva = models.DateField(null = False, default=date.today())
     hora_reserva = models.TimeField(null = False, default='00:00:00')
     cliente_reserva = models.ForeignKey(Cliente,on_delete=models.CASCADE, null = False)
 

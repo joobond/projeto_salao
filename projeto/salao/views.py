@@ -11,6 +11,9 @@ from salao.models import Cliente, Servico, Produto, Reserva, Venda
 from datetime import date
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+import operator
+
 
 class Index(TemplateView):
   template_name = "salao/index.html"
@@ -19,29 +22,21 @@ class Index(TemplateView):
       context['is_authenticated'] = self.request.user.is_authenticated
       return context
 
-from django.contrib.auth.forms import AuthenticationForm
 
 def Login(request):
-    print("LOGIN")
     template_name = "salao/reserva/reservas_de_hoje.html"
     login_template = "salao/login.html"
     mensagem_erro = "Não foi possível fazer login. Usuário ou Senha inválidos."
     if request.method == 'POST':
-        #form = LoginForm(request.POST)
         form = LoginForm(request.POST)
-        print(request.POST)
-        #if form.is_valid():
-
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        print(user)
         if user is not None and user.is_active:
             login(request, user)
-            return render(request, template_name)
+            return redirect('salao:reservas_hoje')
         return render(request, login_template, {'form': form, 'erro': mensagem_erro})
     else:
-        #form = LoginForm()
         form = LoginForm()
         return render(request, 'salao/login.html', {'form': form})
 
@@ -239,6 +234,7 @@ def ReservasHoje(request):
     for reserva in Reserva.objects.all():
         if reserva.data_reserva == date.today():
             reservas.append(reserva)
+    reservas = sorted(reservas, key=operator.attrgetter('hora_reserva'))
     return render(request,template_name, {'reservas':reservas, 'hoje':date.today()})
 
 

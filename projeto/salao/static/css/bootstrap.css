@@ -10036,3 +10036,11 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+ .reserva-box{
+    margin-right:3em;
+  }
+
+  .reserva-box:nth-of-type(4n+4){
+    margin-right: 0 !important;
+  }

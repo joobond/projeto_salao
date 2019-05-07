@@ -9,16 +9,14 @@
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         <a href="{% url 'salao:incluir_reserva' %}"><button class="btn btn-success btn-lg mb-3"><img src="{% static 'img/calendario.svg' %}" width="30px" height="30px"> Nova Reserva</button></a>
-            <div class="d-flex flex-wrap">
+            <div class="d-flex flex-wrap justify-content-around">
     {% for reserva in reservas %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
+              <div class="card mb-4 box-shadow px-3">
                 <div class="card-body">
-                  <p class="card-text font-weight-bold">{{ reserva.cliente_reserva }}</p>
-                  <p class="card-text ">{{ reserva.data_reserva }} às {{ reserva.hora_reserva}}</p>
+                  <p class="card-text font-weight-bold text-center">{{ reserva.cliente_reserva }}</p>
+                  <p class="card-text text-center">{{ reserva.data_reserva }} às {{ reserva.hora_reserva}}</p>
                 </div>
               </div>
-            </div>
     {% endfor %}
             </div>
 {% endblock content %}
