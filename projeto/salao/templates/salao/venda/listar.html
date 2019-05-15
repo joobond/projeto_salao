@@ -1,0 +1,64 @@
+{% extends '../base.html' %}
+{% load staticfiles %}
+{% block titulo_pagina %}
+    Lista de Vendas
+{% endblock titulo_pagina %}
+{% block h1_pagina %}
+    Lista de Vendas
+{% endblock h1_pagina %}
+{% block content %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Data</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venda in object_list %}
+                <tr id="{{ venda.id }}">
+                  <th scope="row" id="id_venda">{{ venda.id }}</th>
+                  <td name="cliente_venda">{{ venda.cliente_venda}}</td>
+                  <td>{{ venda.data_hora_venda }}</td>
+                  <td>R$ {{ venda.valor_venda }}</td>
+                  <td><div class="btn-group">
+                              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ação
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'salao:detalhes_venda' venda.pk %}">Detalhes</a>
+                              </div>
+                        </div>
+                  </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+
+        {% if is_paginated %}
+            <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% else %}
+          <li class=" page-link disabled"><span>Anterior</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item btn btn-primary active"><span>{{ i }} <span class="sr-only ">(current)</span></span></li>
+          {% else %}
+            <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li><a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a></li>
+        {% else %}
+          <li class="page-link active"><span>Próximo</span></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+{% endblock content %}

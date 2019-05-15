@@ -1,0 +1,21 @@
+{% extends 'salao/base.html' %}
+{% load staticfiles %}
+{% block titulo_pagina %}
+    Dashboard
+{% endblock titulo_pagina %}
+{% block content %}
+    <div class="d-flex flex-wrap justify-content-around">
+              <div class="card mb-4 box-shadow px-0">
+                <div class="card-body">
+                  <a class="text-decoration-none" style="margin-left: 25%" href="{% url 'salao:listar_clientes' %}"><img class="img-dashboard" src="{% static 'img/clientes.png' %}"></a>
+                  <p class="card-text text-center mt-3 text-uppercase font-weight-bold">Clientes</p>
+                </div>
+            </div>
+        <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                  <a class="text-decoration-none" style="margin-left: 25%" href="{% url 'salao:listar_clientes' %}"><img class="img-dashboard" src="{% static 'img/clientes.png' %}"></a>
+                  <p class="card-text text-center mt-3 text-uppercase font-weight-bold">Clientes</p>
+                </div>
+            </div>
+    </div>
+{% endblock content %}

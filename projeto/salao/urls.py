@@ -41,12 +41,16 @@ reserva_patterns =[
 # URL para Venda
 venda_patterns =[
     path('venda/', views.FazerVenda, name='fazer_venda'),
+    path('venda/<int:pk>/', views.DetailViewVenda.as_view(), name='detalhes_venda'),
+    path('venda/listar/', views.ListarVendas.as_view(), name='listar_vendas'),
+    # path('venda/listar/', views.pesquisa, name='busca_venda'),
 ]
 
 urlpatterns = [
     path('', views.Index.as_view(), name='index'),
     path('login', views.Login, name='login'),
     path('logout', views.Logout, name='logout'),
+    path('dashboard', views.Dashboard.as_view(), name='dashboard'),
     path('', include(cliente_patterns)),
     path('', include(produto_patterns)),
     path('', include(servico_patterns)),

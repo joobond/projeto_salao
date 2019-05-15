@@ -9,15 +9,13 @@
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <a href="{% url 'salao:incluir_cliente' %}"><button class="btn btn-success btn-lg mb-3"><img src="{% static 'img/cliente.svg' %}" height="30px" width="30px"> Novo Cliente</button></a>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap justify-content-around">
     {% for cliente in clientes %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
+              <div class="card mb-4 box-shadow px-5">
                 <div class="card-body">
                   <p class="card-text font-weight-bold">{{ cliente.nome_cliente }}</p>
                   <p class="card-text ">{{ cliente.pontos_cliente }} pontos</p>
                 </div>
-              </div>
             </div>
     {% endfor %}
     </div>

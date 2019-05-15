@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import  HttpResponseRedirect
+from django.http import  HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.template import loader
 from django.urls import reverse, reverse_lazy
@@ -21,6 +21,11 @@ class Index(TemplateView):
       context = super(Index, self).get_context_data(*args, **kwargs)
       context['is_authenticated'] = self.request.user.is_authenticated
       return context
+
+
+@method_decorator(login_required, name='dispatch')
+class Dashboard(TemplateView):
+  template_name="salao/dashboard.html"
 
 
 def Login(request):
@@ -246,10 +251,24 @@ def FazerVenda(request):
         form = VendaForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect("salao:index")
+        return redirect("salao:listar_vendas")
     else:
         form = VendaForm()
         return render(request, template_name, {'form': form})
+
+
+@method_decorator(login_required, name='dispatch')
+class ListarVendas(ListView):
+    template_name = 'salao/venda/listar.html'
+    model = Venda
+    context_object_name = 'vendas'
+    paginate_by=10
+
+
+@method_decorator(login_required, name='dispatch')
+class DetailViewVenda(generic.DetailView):
+    model = Venda
+    template_name = 'salao/venda/detalhes.html'
 
 
 

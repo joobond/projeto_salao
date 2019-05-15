@@ -68,7 +68,7 @@ class Venda(models.Model):
 
 
     def __str__(self):
-        return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "- PontosG: " + str(self.soma_pontos_venda)
+        return str(self.cliente_venda) + ":" + str(self.data_hora_venda) + "- ValorG: " + str(self.valor_venda)
 
 
     @property
@@ -83,6 +83,16 @@ class Venda(models.Model):
                 pontos = pontos + x.pontos_produto
         return pontos
 
+    @property
+    def valor_venda(self):
+        valor = 0
+        if self.servico_venda:
+            for x in self.servico_venda.all():
+                valor = valor + x.valor_servico
+
+        if self.produto_venda:
+            for x in self.produto_venda.all():
+                valor = valor + x.valor_produto
+        return valor
 
 
-    #Fazer Função de somatória de pontos
