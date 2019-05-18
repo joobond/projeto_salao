@@ -4,18 +4,78 @@
     Dashboard
 {% endblock titulo_pagina %}
 {% block content %}
-    <div class="d-flex flex-wrap justify-content-around">
-              <div class="card mb-4 box-shadow px-0">
-                <div class="card-body">
-                  <a class="text-decoration-none" style="margin-left: 25%" href="{% url 'salao:listar_clientes' %}"><img class="img-dashboard" src="{% static 'img/clientes.png' %}"></a>
-                  <p class="card-text text-center mt-3 text-uppercase font-weight-bold">Clientes</p>
-                </div>
+    <div class="d-flex flex-wrap justify-content-between px-4">
+              <div class="shadow-sm">
+                <a class="card-dashboard text-decoration-none" href="{% url 'salao:listar_clientes' %}">
+                    <img class="img-dashboard" src="{% static 'img/cliente.png' %}">
+                    <p class="text-center mt-3 text-uppercase font-weight-bold">Clientes</p>
+                </a>
             </div>
-        <div class="card mb-4 box-shadow">
-                <div class="card-body">
-                  <a class="text-decoration-none" style="margin-left: 25%" href="{% url 'salao:listar_clientes' %}"><img class="img-dashboard" src="{% static 'img/clientes.png' %}"></a>
-                  <p class="card-text text-center mt-3 text-uppercase font-weight-bold">Clientes</p>
-                </div>
+
+        <div class="shadow-sm">
+                <a class="card-dashboard text-decoration-none" href="{% url 'salao:listar_produtos' %}">
+                    <img class="img-dashboard" src="{% static 'img/barber.png' %}">
+                    <p class="text-center mt-3 text-uppercase font-weight-bold">Produtos</p>
+                </a>
             </div>
+        <div class="shadow-sm">
+                <a class="card-dashboard text-decoration-none" href="{% url 'salao:listar_servicos' %}">
+                    <img class="img-dashboard" src="{% static 'img/servico.png' %}">
+                    <p class="text-center mt-3 text-uppercase font-weight-bold">Serviços</p>
+                </a>
+        </div>
+    </div>
+
+    <hr class="my-5">
+    <div class="d-flex justify-content-between px-4">
+        <div>
+            <canvas id="grafico1" width="400" height="400"></canvas>
+        </div>
+
+        <div>
+            <canvas id="grafico2" width="400" height="400"></canvas>
+        </div>
     </div>
 {% endblock content %}
+{% block codigo %}
+<script>
+    var ctx = document.getElementById('grafico1').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'doughnut',
+
+        // The data for our dataset
+        data: {
+            labels: ['Este mês'],
+            datasets: [{
+                data: [12],
+                backgroundColor: [
+                    'rgb(44,176,71)',
+                ]
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+    var ctx2 = document.getElementById('grafico2').getContext('2d');
+    var chart2 = new Chart(ctx2, {
+        // The type of chart we want to create
+        type: 'pie',
+
+        // The data for our dataset
+        data: {
+            labels: ['Esta semana'],
+            datasets: [{
+                data: [8],
+                backgroundColor: [
+                    'rgb(69,90,177)',
+                ]
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+</script>
+{% endblock codigo %}
