@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import date
+from datetime import date, datetime
 import json
 
 class Cliente (models.Model):
@@ -94,5 +94,11 @@ class Venda(models.Model):
             for x in self.produto_venda.all():
                 valor = valor + x.valor_produto
         return valor
+
+    # def vendas_mes(self):
+    #     valor = 0
+    #     data = datetime.datetime(self.data_hora_venda)
+    #     if self.data_hora_venda
+    #         (datetime.today().replace(day=1))
 
 

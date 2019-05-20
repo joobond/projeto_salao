@@ -26,6 +26,12 @@ class Index(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class Dashboard(TemplateView):
   template_name="salao/dashboard.html"
+  # def get_context_data(self, *args, **kwargs):
+  #     context = super(Dashboard, self).get_context_data(*args, **kwargs)
+  #     context['vendas_mes'] = Venda.object.all()
+  #     context['vendas_anterior'] = Venda.object.all().filter(data_hora_venda__range=["2019-04-01", "2019-04-30"])
+  #     return context
+
 
 
 def Login(request):
@@ -57,7 +63,7 @@ def Logout(request):
 @method_decorator(login_required, name='dispatch')
 class DetailViewProduto(generic.DetailView):
     model = Produto
-    template_name = 'salao/produto/reservas_de_hoje.html'
+    template_name = 'salao/produto/detalhes.html'
 
 
 @method_decorator(login_required, name='dispatch')
@@ -109,7 +115,7 @@ def EditarProduto(request, pk):
 @method_decorator(login_required, name='dispatch')
 class DetailViewCliente(generic.DetailView):
     model = Cliente
-    template_name = 'salao/cliente/reservas_de_hoje.html'
+    template_name = 'salao/cliente/detalhes.html'
 
 
 @method_decorator(login_required, name='dispatch')
@@ -169,7 +175,7 @@ def MelhoresClientes(request):
 @method_decorator(login_required, name='dispatch')
 class DetailViewServico(generic.DetailView):
     model = Servico
-    template_name = 'salao/servico/reservas_de_hoje.html'
+    template_name = 'salao/servico/detalhes.html'
 
 
 @login_required

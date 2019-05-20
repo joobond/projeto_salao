@@ -7,7 +7,7 @@
 {% endblock h1_pagina %}
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <p class="mr-3"> Descrição do serviço: {{servico.desc_servico}}</p>
-    <p class="mr-3"> Pontos do serviço: {{servico.pontos_servico}}</p>
-    <p class="mr-3"> Valor do serviço: R$ {{servico.valor_servico}}</p>
+<p class="mr-3"> <b>Descrição do serviço:</b> {{servico.desc_servico}}</p>
+<p class="mr-3"> <b>Pontos do serviço:</b> {{servico.pontos_servico}}</p>
+<p class="mr-3"> <b>Valor do serviço:</b> R$ {{servico.valor_servico}}</p>
 {% endblock content %}

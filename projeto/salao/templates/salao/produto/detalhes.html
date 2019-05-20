@@ -7,8 +7,8 @@
 {% endblock h1_pagina %}
 {% block content %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    <p class="mr-3"> Descrição do produto: {{produto.desc_produto}}</p>
-    <p class="mr-3"> Pontos do produto: {{produto.pontos_produto}}</p>
-    <p class="mr-3"> Valor do produto: R$ {{produto.valor_produto}}</p>
-    <p class="mr-3"> Marca do produto: {{produto.marca_produto}}</p>
+    <p class="mr-3"> <b>Descrição do produto:</b> {{produto.desc_produto}}</p>
+<p class="mr-3"> <b>Pontos do produto:</b> {{produto.pontos_produto}}</p>
+<p class="mr-3"> <b>Valor do produto:</b> R$ {{produto.valor_produto}}</p>
+<p class="mr-3"> <b>Marca do produto:</b> {{produto.marca_produto}}</p>
 {% endblock content %}
